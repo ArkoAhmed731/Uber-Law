@@ -10,10 +10,17 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="hero">
+  <header class="hero" id="top">
     <nav class="nav">
       <div class="logo">Bichar <span>Bebostha</span></div>
-      <a class="cta" href="#contact">Get Early Access</a>
+      <div class="nav-links">
+        <a href="#problem">Problem</a>
+        <a href="#solution">Solution</a>
+        <a href="#marketplace">Marketplace</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="cta" data-action="join-waitlist">Get Early Access</button>
     </nav>
     <div class="hero-content">
       <p class="tag">Uber for Law in Bangladesh</p>
@@ -22,8 +29,9 @@
         Bichar Bebostha connects citizens with verified lawyers and AI-powered legal guidance—anytime, anywhere.
       </p>
       <div class="hero-actions">
-        <a href="#solution" class="primary">Explore the platform</a>
-        <a href="#market" class="secondary">See market opportunity</a>
+        <button class="primary" data-action="launch-demo">Launch interactive demo</button>
+        <button class="secondary" data-action="view-lawyers">Meet the lawyers</button>
+        <button class="ghost" data-action="open-roadmap">See the roadmap</button>
       </div>
       <div class="stats">
         <div>
@@ -48,6 +56,7 @@
           <li>Match with a verified lawyer</li>
           <li>Get instant advice or book a session</li>
         </ul>
+        <button class="inline" data-action="view-playbook">View onboarding playbook</button>
       </div>
       <div class="chat-demo">
         <div class="bubble user">What are the steps to file a land dispute?</div>
@@ -100,6 +109,18 @@
       </div>
     </section>
 
+    <section class="section how-it-works" id="how-it-works">
+      <div class="section-heading">
+        <p class="eyebrow">How it works</p>
+        <h2>Everything you need to navigate legal issues with confidence.</h2>
+      </div>
+      <div class="steps" id="workflow"></div>
+      <div class="actions">
+        <button class="primary" data-action="schedule-demo">Schedule a founder call</button>
+        <button class="secondary" data-action="download-deck">Download investor deck</button>
+      </div>
+    </section>
+
     <section class="section highlight" id="market">
       <div class="section-heading">
         <p class="eyebrow">Market Opportunity</p>
@@ -118,6 +139,42 @@
           <span class="metric-number">130M+</span>
           <span class="metric-label">Active smartphone users</span>
         </div>
+      </div>
+    </section>
+
+    <section class="section" id="marketplace">
+      <div class="section-heading">
+        <p class="eyebrow">Lawyer marketplace</p>
+        <h2>Verified professionals ready to help.</h2>
+        <p class="section-subtitle">Browse our curated roster, review specialties, and book instantly.</p>
+      </div>
+      <div class="filters">
+        <button class="secondary" data-filter="all">All</button>
+        <button class="secondary" data-filter="family">Family</button>
+        <button class="secondary" data-filter="property">Property</button>
+        <button class="secondary" data-filter="business">Business</button>
+        <button class="secondary" data-filter="criminal">Criminal</button>
+      </div>
+      <div class="grid three" id="lawyer-grid"></div>
+    </section>
+
+    <section class="section ai" id="ai-demo">
+      <div class="section-heading">
+        <p class="eyebrow">AI Legal Copilot</p>
+        <h2>Instant answers in Bangla and English.</h2>
+      </div>
+      <div class="ai-layout">
+        <div class="ai-panel">
+          <div class="chat-window" id="chat-window"></div>
+          <form class="prompt-form" id="prompt-form">
+            <input type="text" id="prompt-input" placeholder="Ask anything about Bangladeshi law" required />
+            <button type="submit">Send</button>
+          </form>
+        </div>
+        <aside class="prompt-suggestions">
+          <h3>Popular prompts</h3>
+          <div class="prompt-buttons" id="prompt-buttons"></div>
+        </aside>
       </div>
     </section>
 
@@ -190,6 +247,7 @@
           <p>Scale to South Asia and diaspora communities worldwide.</p>
         </li>
       </ol>
+      <button class="primary" data-action="subscribe-updates">Subscribe for roadmap updates</button>
     </section>
 
     <section class="section vision" id="vision">
@@ -198,12 +256,41 @@
         <h2>Justice should not be a privilege—it should be within reach for all.</h2>
       </div>
       <p class="vision-text">
-        Bichar Bebostha is the digital justice bridge for the next generation. By blending AI efficiency with human empathy, we make legal help affordable, accessible, and trustworthy.
+        Bichar Bebostha is the digital justice bridge for the next generation. By blending AI efficiency with human empathy, we
+        make legal help affordable, accessible, and trustworthy.
       </p>
-      <a class="primary" href="#contact">Join the movement</a>
+      <button class="primary" data-action="join-movement">Join the movement</button>
     </section>
 
-    <section class="section contact" id="contact">
+    <section class="section" id="pricing">
+      <div class="section-heading">
+        <p class="eyebrow">Pricing</p>
+        <h2>Simple, transparent plans for every need.</h2>
+      </div>
+      <div class="grid three" id="pricing-grid"></div>
+    </section>
+
+    <section class="section" id="testimonials">
+      <div class="section-heading">
+        <p class="eyebrow">Voices</p>
+        <h2>What early adopters are saying.</h2>
+      </div>
+      <div class="testimonial">
+        <button class="icon" data-action="prev-testimonial" aria-label="Previous testimonial">◀</button>
+        <div class="testimonial-content" id="testimonial-content"></div>
+        <button class="icon" data-action="next-testimonial" aria-label="Next testimonial">▶</button>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="section-heading">
+        <p class="eyebrow">FAQ</p>
+        <h2>Answers to common questions.</h2>
+      </div>
+      <div class="faq-list" id="faq-list"></div>
+    </section>
+
+    <section class="section" id="contact">
       <div class="section-heading">
         <p class="eyebrow">Get in touch</p>
         <h2>Be first to experience Bichar Bebostha.</h2>
@@ -238,11 +325,25 @@
   <footer>
     <p>© <span id="year"></span> Bichar Bebostha. All rights reserved.</p>
     <div class="footer-links">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Support</a>
+      <a href="#privacy" data-action="view-privacy">Privacy</a>
+      <a href="#terms" data-action="view-terms">Terms</a>
+      <a href="#support" data-action="contact-support">Support</a>
     </div>
+    <button class="scroll-top" data-action="scroll-top">Back to top</button>
   </footer>
+
+  <div class="modal hidden" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modal-title"></h3>
+        <button class="icon" data-action="close-modal" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+      <div class="modal-footer" id="modal-footer"></div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toast-container"></div>
 
   <script src="script.js"></script>
 </body>
