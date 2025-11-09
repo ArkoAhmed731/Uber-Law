@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plans & pricing | Bichar Bebostha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="pricing">
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+  <header class="site-header" id="top">
+    <nav class="nav">
+      <a class="brand" href="index.html">Bichar <span>Bebostha</span></a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" data-page-link="home">Home</a>
+        <a href="lawyers.html" data-page-link="lawyers">Lawyers</a>
+        <a href="pricing.html" data-page-link="pricing">Plans</a>
+        <a href="support.html" data-page-link="support">Support</a>
+      </div>
+      <button class="btn primary" data-action="join-waitlist">Join the waitlist</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="sub-hero">
+      <h1>Flexible plans for every legal moment.</h1>
+      <p>Whether you need a quick answer or a long-term partner, pick the plan that matches your pace.</p>
+      <div class="hero-actions">
+        <button class="btn accent" data-action="join-waitlist">Start free intake</button>
+        <button class="btn outline" data-action="open-contact">Talk with a specialist</button>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="section-heading">
+        <p class="eyebrow">Plans</p>
+        <h2>Simple, transparent options crafted for Bangladesh.</h2>
+      </div>
+      <div class="grid three" id="pricing-grid"></div>
+    </section>
+
+    <section class="section alt">
+      <div class="grid two">
+        <article class="card soft">
+          <h3>Included with every plan</h3>
+          <ul class="feature-list">
+            <li>Secure document vault</li>
+            <li>Bangla & English support</li>
+            <li>Verified advocate responses</li>
+            <li>Progress tracking dashboard</li>
+          </ul>
+        </article>
+        <article class="card soft">
+          <h3>Need something bespoke?</h3>
+          <p>Corporates and NGOs can request custom retainers with dedicated legal success teams.</p>
+          <button class="btn accent" data-action="open-contact">Request a custom quote</button>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">Bichar <span>Bebostha</span></a>
+        <p>Better decisions through approachable legal expertise.</p>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="lawyers.html">Lawyers</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Stay in touch</h4>
+        <form class="inline-form" data-form="newsletter">
+          <label>
+            <span>Email</span>
+            <input type="email" required placeholder="you@example.com" />
+          </label>
+          <button type="submit" class="btn primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <button class="btn link" data-action="view-privacy">Privacy</button>
+      <button class="btn link" data-action="view-terms">Terms</button>
+      <button class="btn link" data-action="scroll-top">Back to top</button>
+    </div>
+  </footer>
+
+  <div class="modal hidden" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-backdrop" data-action="close-modal"></div>
+    <div class="modal-content">
+      <header class="modal-header">
+        <h3 id="modal-title"></h3>
+        <button class="btn icon" data-action="close-modal" aria-label="Close modal">×</button>
+      </header>
+      <div class="modal-body" id="modal-body"></div>
+      <footer class="modal-footer" id="modal-footer"></footer>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

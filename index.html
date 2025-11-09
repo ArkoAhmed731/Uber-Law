@@ -3,247 +3,193 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bichar Bebostha – Uber for Law</title>
+  <title>Bichar Bebostha | Legal help in minutes</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <header class="hero">
+<body data-page="home">
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+  <header class="site-header" id="top">
     <nav class="nav">
-      <div class="logo">Bichar <span>Bebostha</span></div>
-      <a class="cta" href="#contact">Get Early Access</a>
+      <a class="brand" href="index.html">Bichar <span>Bebostha</span></a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" data-page-link="home">Home</a>
+        <a href="lawyers.html" data-page-link="lawyers">Lawyers</a>
+        <a href="pricing.html" data-page-link="pricing">Plans</a>
+        <a href="support.html" data-page-link="support">Support</a>
+      </div>
+      <button class="btn primary" data-action="join-waitlist">Join the waitlist</button>
     </nav>
-    <div class="hero-content">
-      <p class="tag">Uber for Law in Bangladesh</p>
-      <h1>Justice, On Demand.</h1>
-      <p class="subtitle">
-        Bichar Bebostha connects citizens with verified lawyers and AI-powered legal guidance—anytime, anywhere.
-      </p>
-      <div class="hero-actions">
-        <a href="#solution" class="primary">Explore the platform</a>
-        <a href="#market" class="secondary">See market opportunity</a>
-      </div>
-      <div class="stats">
-        <div>
-          <span class="number">160M+</span>
-          <span class="label">Potential clients</span>
-        </div>
-        <div>
-          <span class="number">60K+</span>
-          <span class="label">Licensed lawyers</span>
-        </div>
-        <div>
-          <span class="number">130M+</span>
-          <span class="label">Mobile internet users</span>
-        </div>
-      </div>
-    </div>
-    <div class="hero-graphic">
-      <div class="card">
-        <h3>Legal help in three taps</h3>
-        <ul>
-          <li>Describe your legal need</li>
-          <li>Match with a verified lawyer</li>
-          <li>Get instant advice or book a session</li>
-        </ul>
-      </div>
-      <div class="chat-demo">
-        <div class="bubble user">What are the steps to file a land dispute?</div>
-        <div class="bubble ai">AI Legal Assistant: Here’s a quick overview based on Bangladeshi property law…</div>
-        <div class="bubble lawyer">Adv. Rahman: Let's schedule a call to review your documents.</div>
-      </div>
-    </div>
   </header>
 
   <main>
-    <section class="section" id="problem">
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">Uber for Law · Bangladesh</p>
+        <h1>Legal clarity without the confusion.</h1>
+        <p class="lead">
+          Bichar Bebostha pairs AI guidance with trusted Bangladeshi lawyers so families and businesses get the right help in minutes.
+        </p>
+        <div class="hero-actions">
+          <button class="btn accent" data-action="view-lawyers">Browse lawyers</button>
+          <button class="btn ghost" data-action="explore-pricing">Compare plans</button>
+          <button class="btn link" data-action="open-contact">Talk to support</button>
+        </div>
+        <dl class="stats">
+          <div>
+            <dt>Lawyers onboarded</dt>
+            <dd>60K+</dd>
+          </div>
+          <div>
+            <dt>Average response time</dt>
+            <dd>12 min</dd>
+          </div>
+          <div>
+            <dt>Client satisfaction</dt>
+            <dd>4.9/5</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="hero-panel">
+        <div class="panel-card">
+          <h3>Instant legal brief</h3>
+          <p>Answer a few quick questions and our copilot drafts a summary for the perfect lawyer match.</p>
+          <button class="btn secondary" data-action="view-intake">Preview intake flow</button>
+        </div>
+        <div class="panel-card chat">
+          <div class="chat-bubble user">What do I need to transfer land to my sister?</div>
+          <div class="chat-bubble ai">Start with a mutation application and a registered gift deed. Want a lawyer to review?</div>
+          <div class="chat-bubble lawyer">I can prep the documents and file within three days.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
       <div class="section-heading">
-        <p class="eyebrow">The Problem</p>
-        <h2>Access to justice is complex, costly, and confusing.</h2>
+        <p class="eyebrow">Why Bichar Bebostha</p>
+        <h2>A lighter way to get serious legal work done.</h2>
       </div>
       <div class="grid three">
         <article class="card">
-          <h3>Intimidating system</h3>
-          <p>Legal services remain opaque. Citizens struggle to know where to start or whom to trust.</p>
+          <h3>Guided onboarding</h3>
+          <p>Friendly forms surface the right details so you never have to guess what to submit.</p>
         </article>
         <article class="card">
-          <h3>Trust gap</h3>
-          <p>Finding the right lawyer is daunting, and reviews are scarce.</p>
+          <h3>Trusted experts</h3>
+          <p>Every lawyer is identity-checked, reviewed by peers, and rated by real clients.</p>
         </article>
         <article class="card">
-          <h3>Limited reach</h3>
-          <p>Lawyers have few digital tools to engage new clients beyond their chambers.</p>
+          <h3>Transparent pricing</h3>
+          <p>See flat rates and retainers before you book, with mobile wallet payments built in.</p>
         </article>
       </div>
     </section>
 
-    <section class="section" id="solution">
+    <section class="section alt" id="workflow-section">
       <div class="section-heading">
-        <p class="eyebrow">The Solution</p>
-        <h2>AI speed meets human expertise.</h2>
+        <p class="eyebrow">How it works</p>
+        <h2>Three simple steps from question to resolution.</h2>
+      </div>
+      <div class="workflow-grid" id="workflow"></div>
+      <div class="inline-actions">
+        <button class="btn secondary" data-action="view-lawyers">Find my lawyer</button>
+        <button class="btn outline" data-action="explore-pricing">See plan details</button>
+      </div>
+    </section>
+
+    <section class="section" id="metrics">
+      <div class="section-heading">
+        <p class="eyebrow">Built for everyday life</p>
+        <h2>Access justice from anywhere in Bangladesh.</h2>
       </div>
       <div class="grid three">
-        <article class="card">
-          <h3>On-demand expert opinion</h3>
-          <p>Pay-per-question access to vetted lawyers for immediate answers.</p>
+        <article class="card soft">
+          <h3>64 districts covered</h3>
+          <p>Video, phone, and in-person consultations wherever you are.</p>
         </article>
-        <article class="card">
-          <h3>Seamless booking</h3>
-          <p>Schedule phone, video, or in-person consultations with transparent pricing.</p>
+        <article class="card soft">
+          <h3>Always-on help</h3>
+          <p>AI answers in Bangla or English with a lawyer double-check before delivery.</p>
         </article>
-        <article class="card">
-          <h3>AI Copilot</h3>
-          <p>Our chatbot provides instant legal guidance based on Bangladeshi law, 24/7.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section highlight" id="market">
-      <div class="section-heading">
-        <p class="eyebrow">Market Opportunity</p>
-        <h2>A massive, underserved audience ready for digital justice.</h2>
-      </div>
-      <div class="metrics">
-        <div class="metric">
-          <span class="metric-number">160M+</span>
-          <span class="metric-label">Population in Bangladesh</span>
-        </div>
-        <div class="metric">
-          <span class="metric-number">60,000+</span>
-          <span class="metric-label">Licensed lawyers seeking visibility</span>
-        </div>
-        <div class="metric">
-          <span class="metric-number">130M+</span>
-          <span class="metric-label">Active smartphone users</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="revenue">
-      <div class="section-heading">
-        <p class="eyebrow">Revenue Model</p>
-        <h2>Multiple monetization streams for sustainable growth.</h2>
-      </div>
-      <div class="grid three">
-        <article class="card">
-          <h3>Commission</h3>
-          <p>Earn a commission on lawyer fees for Q&amp;A and bookings.</p>
-        </article>
-        <article class="card">
-          <h3>Corporate packages</h3>
-          <p>Offer legal support subscriptions for SMEs, startups, and NGOs.</p>
-        </article>
-        <article class="card">
-          <h3>AI premium</h3>
-          <p>Upsell AI-powered document prep, case summaries, and compliance checks.</p>
+        <article class="card soft">
+          <h3>Secure by design</h3>
+          <p>Bank-grade encryption and document vaults keep your case private.</p>
         </article>
       </div>
     </section>
 
-    <section class="section" id="edge">
+    <section class="section highlight" id="testimonials">
       <div class="section-heading">
-        <p class="eyebrow">Competitive Edge</p>
-        <h2>Built for trust, speed, and local nuance.</h2>
+        <p class="eyebrow">Stories from our community</p>
+        <h2>People love how approachable legal help feels now.</h2>
       </div>
-      <div class="grid four">
-        <article class="card">
-          <h3>First mover</h3>
-          <p>Pioneering the Uber-for-Law model in Bangladesh.</p>
-        </article>
-        <article class="card">
-          <h3>Verified network</h3>
-          <p>Lawyers undergo rigorous checks and clients leave transparent reviews.</p>
-        </article>
-        <article class="card">
-          <h3>Hybrid intelligence</h3>
-          <p>AI and human expertise work together to deliver outcomes fast.</p>
-        </article>
-        <article class="card">
-          <h3>Localized experience</h3>
-          <p>Optimized for Bangla language, culture, and legal framework.</p>
-        </article>
+      <div class="testimonial-card" id="testimonial-content"></div>
+      <div class="testimonial-controls">
+        <button class="btn ghost" data-action="prev-testimonial" aria-label="Previous testimonial">Prev</button>
+        <div class="dots" id="testimonial-dots"></div>
+        <button class="btn ghost" data-action="next-testimonial" aria-label="Next testimonial">Next</button>
       </div>
     </section>
 
-    <section class="section roadmap" id="roadmap">
-      <div class="section-heading">
-        <p class="eyebrow">Roadmap</p>
-        <h2>Building the future of justice, one phase at a time.</h2>
-      </div>
-      <ol class="timeline">
-        <li>
-          <h3>Phase 1 — Q&amp;A Marketplace</h3>
-          <p>Launch instant lawyer responses, secure payments, and ratings.</p>
-        </li>
-        <li>
-          <h3>Phase 2 — Booking Platform</h3>
-          <p>Enable phone, video, and in-person consultations with calendar sync.</p>
-        </li>
-        <li>
-          <h3>Phase 3 — AI Chatbot</h3>
-          <p>Introduce AI-driven legal guidance tuned for Bangladeshi law.</p>
-        </li>
-        <li>
-          <h3>Phase 4 — Regional Expansion</h3>
-          <p>Scale to South Asia and diaspora communities worldwide.</p>
-        </li>
-      </ol>
-    </section>
-
-    <section class="section vision" id="vision">
-      <div class="section-heading">
-        <p class="eyebrow">Vision</p>
-        <h2>Justice should not be a privilege—it should be within reach for all.</h2>
-      </div>
-      <p class="vision-text">
-        Bichar Bebostha is the digital justice bridge for the next generation. By blending AI efficiency with human empathy, we make legal help affordable, accessible, and trustworthy.
-      </p>
-      <a class="primary" href="#contact">Join the movement</a>
-    </section>
-
-    <section class="section contact" id="contact">
-      <div class="section-heading">
-        <p class="eyebrow">Get in touch</p>
-        <h2>Be first to experience Bichar Bebostha.</h2>
-      </div>
-      <form class="contact-form">
-        <div class="field">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" placeholder="Your full name" required>
+    <section class="section cta" id="cta">
+      <div class="cta-card">
+        <h2>Ready to simplify your legal to-do list?</h2>
+        <p>Join thousands of Bangladeshis already using Bichar Bebostha for fast, friendly guidance.</p>
+        <div class="hero-actions">
+          <button class="btn accent" data-action="join-waitlist">Join the waitlist</button>
+          <button class="btn outline" data-action="open-contact">Request a callback</button>
         </div>
-        <div class="field">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" required>
-        </div>
-        <div class="field">
-          <label for="company">Organization</label>
-          <input id="company" name="company" type="text" placeholder="Company or group">
-        </div>
-        <div class="field">
-          <label for="message">How can we help?</label>
-          <textarea id="message" name="message" rows="4" placeholder="Tell us about your legal needs"></textarea>
-        </div>
-        <button type="submit">Request Early Access</button>
-      </form>
-      <div class="contact-info">
-        <p><strong>Email:</strong> hello@bicharbebostha.com</p>
-        <p><strong>Phone:</strong> +880 1234-567890</p>
-        <p><strong>Payments Supported:</strong> bKash, Rocket, Visa, Mastercard</p>
       </div>
     </section>
   </main>
 
-  <footer>
-    <p>© <span id="year"></span> Bichar Bebostha. All rights reserved.</p>
-    <div class="footer-links">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Support</a>
+  <footer class="site-footer" id="contact">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">Bichar <span>Bebostha</span></a>
+        <p>Your trusted bridge between smart AI triage and human advocates.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="lawyers.html">Lawyer directory</a></li>
+          <li><a href="pricing.html">Plans & pricing</a></li>
+          <li><a href="support.html">Help centre</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Stay in touch</h4>
+        <form class="inline-form" data-form="newsletter">
+          <label>
+            <span>Email</span>
+            <input type="email" required placeholder="you@example.com" />
+          </label>
+          <button type="submit" class="btn primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <button class="btn link" data-action="view-privacy">Privacy</button>
+      <button class="btn link" data-action="view-terms">Terms</button>
+      <button class="btn link" data-action="scroll-top">Back to top</button>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <div class="modal hidden" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-backdrop" data-action="close-modal"></div>
+    <div class="modal-content">
+      <header class="modal-header">
+        <h3 id="modal-title"></h3>
+        <button class="btn icon" data-action="close-modal" aria-label="Close modal">×</button>
+      </header>
+      <div class="modal-body" id="modal-body"></div>
+      <footer class="modal-footer" id="modal-footer"></footer>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
