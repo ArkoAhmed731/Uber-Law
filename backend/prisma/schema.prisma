@@ -1,0 +1,389 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+enum MaritalStatus {
+  NEVER_MARRIED
+  DIVORCED
+  WIDOWED
+  SEPARATED
+}
+
+enum FileType {
+  PROFILE_PHOTO
+  FULL_PHOTO
+  DOCUMENT
+  IDENTITY
+}
+
+enum RelativeType {
+  UNCLE
+  AUNT
+}
+
+enum RelationSide {
+  MATERNAL
+  PATERNAL
+}
+
+enum SiblingPosition {
+  ELDER
+  YOUNGER
+}
+
+model Country {
+  id         Int    @id @default(autoincrement())
+  name       String @unique
+  nameBangla String?
+  cities     City[]
+}
+
+model City {
+  id            Int      @id @default(autoincrement())
+  name          String
+  nameBangla    String?
+  stateOrRegion String?
+  countryId     Int
+  country       Country @relation(fields: [countryId], references: [id], onDelete: Cascade)
+  candidatesBirth   Candidate[] @relation("BirthCity")
+  candidatesCurrent Candidate[] @relation("CurrentCity")
+  educationEntries  CandidateEducationEntry[]
+  workplaceCandidates Candidate[] @relation("WorkplaceCity")
+  siblingWorkplaces   CandidateSibling[] @relation("SiblingWorkplaceCity")
+  maternalRelativeCities CandidateMaternalRelative[] @relation("MaternalRelativeCity")
+  paternalRelativeCities CandidatePaternalRelative[] @relation("PaternalRelativeCity")
+  partnerExpectationPreferredCities CandidatePartnerExpectation[] @relation("PreferredCity")
+
+  @@unique([name, countryId])
+}
+
+model Occupation {
+  id         Int    @id @default(autoincrement())
+  name       String @unique
+  nameBangla String?
+  candidates    Candidate[]
+  fatherProfiles Candidate[] @relation("FatherOccupation")
+  motherProfiles Candidate[] @relation("MotherOccupation")
+  siblings      CandidateSibling[]
+  partnerExpectations CandidatePartnerExpectation[]
+}
+
+model IncomeRange {
+  id         Int    @id @default(autoincrement())
+  name       String @unique
+  nameBangla String?
+  candidates Candidate[]
+  partnerExpectations CandidatePartnerExpectation[]
+}
+
+model Religion {
+  id         Int    @id @default(autoincrement())
+  name       String @unique
+  nameBangla String?
+  castes     Caste[]
+  candidates Candidate[]
+}
+
+model Caste {
+  id         Int      @id @default(autoincrement())
+  name       String
+  nameBangla String?
+  religionId Int
+  religion   Religion @relation(fields: [religionId], references: [id], onDelete: Cascade)
+  candidates Candidate[]
+
+  @@unique([name, religionId])
+}
+
+model ReligiousPracticeLevel {
+  id         Int    @id @default(autoincrement())
+  name       String @unique
+  nameBangla String?
+  candidates Candidate[]
+  partnerExpectations CandidatePartnerExpectation[]
+}
+
+model FamilyFinancialStatus {
+  id         Int    @id @default(autoincrement())
+  name       String @unique
+  nameBangla String?
+  candidates Candidate[]
+  partnerExpectations CandidatePartnerExpectation[]
+}
+
+model FamilyType {
+  id         Int    @id @default(autoincrement())
+  name       String @unique
+  nameBangla String?
+  candidates Candidate[]
+  partnerExpectations CandidatePartnerExpectation[]
+}
+
+model SmokingHabit {
+  id         Int    @id @default(autoincrement())
+  name       String @unique
+  nameBangla String?
+  candidates Candidate[]
+  partnerExpectations CandidatePartnerExpectation[]
+}
+
+model DrinkingHabit {
+  id         Int    @id @default(autoincrement())
+  name       String @unique
+  nameBangla String?
+  candidates Candidate[]
+  partnerExpectations CandidatePartnerExpectation[]
+}
+
+model EducationLevel {
+  id         Int    @id @default(autoincrement())
+  name       String @unique
+  nameBangla String?
+  educationEntries CandidateEducationEntry[]
+  candidates Candidate[]
+  partnerExpectations CandidatePartnerExpectation[]
+}
+
+model Hobby {
+  id         Int    @id @default(autoincrement())
+  name       String @unique
+  nameBangla String?
+  candidateHobbies CandidateHobby[]
+}
+
+model Candidate {
+  id                Int       @id @default(autoincrement())
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  fullName          String
+  banglaName        String?
+  gender            Gender
+  dateOfBirth       DateTime?
+  heightCm          Int?
+  weightKg          Int?
+  bloodGroup        String?
+
+  maritalStatus     MaritalStatus?
+  religionId        Int?
+  casteId           Int?
+  religiousPracticeLevelId Int?
+
+  numberOfChildren  Int?      @default(0)
+  willingToMarryAgain Boolean?
+
+  birthCountryId    Int?
+  birthCityId       Int?
+  currentCountryId  Int?
+  currentCityId     Int?
+  residencyStatus   String?
+
+  occupationId      Int?
+  workplaceCountryId Int?
+  workplaceCityId   Int?
+  incomeRangeId     Int?
+  highestEducationLevelId Int?
+
+  motherName        String?
+  isMotherAlive     Boolean? @default(true)
+  motherOccupationId Int?
+  motherBirthCountryId Int?
+  motherBirthCityId Int?
+
+  fatherName        String?
+  isFatherAlive     Boolean? @default(true)
+  fatherOccupationId Int?
+  fatherBirthCountryId Int?
+  fatherBirthCityId Int?
+
+  numberOfSiblings  Int? @default(0)
+  numberOfBrothers  Int? @default(0)
+  numberOfSisters   Int? @default(0)
+  numberOfElderBrothers Int? @default(0)
+  numberOfYoungerBrothers Int? @default(0)
+  numberOfElderSisters Int? @default(0)
+  numberOfYoungerSisters Int? @default(0)
+
+  familyFinancialStatusId Int?
+  familyTypeId      Int?
+
+  smokingHabitId    Int?
+  drinkingHabitId   Int?
+  whatsappNumber    String?
+  selfDescription   String?
+
+  motherCountry     Country? @relation("MotherCountry", fields: [motherBirthCountryId], references: [id], onDelete: SetNull)
+  motherCity        City?    @relation("MotherCity", fields: [motherBirthCityId], references: [id], onDelete: SetNull)
+  fatherCountry     Country? @relation("FatherCountry", fields: [fatherBirthCountryId], references: [id], onDelete: SetNull)
+  fatherCity        City?    @relation("FatherCity", fields: [fatherBirthCityId], references: [id], onDelete: SetNull)
+
+  religion          Religion? @relation(fields: [religionId], references: [id], onDelete: SetNull)
+  caste             Caste?    @relation(fields: [casteId], references: [id], onDelete: SetNull)
+  religiousPracticeLevel ReligiousPracticeLevel? @relation(fields: [religiousPracticeLevelId], references: [id], onDelete: SetNull)
+
+  birthCountry      Country?  @relation("BirthCountry", fields: [birthCountryId], references: [id], onDelete: SetNull)
+  birthCity         City?     @relation("BirthCity", fields: [birthCityId], references: [id], onDelete: SetNull)
+  currentCountry    Country?  @relation("CurrentCountry", fields: [currentCountryId], references: [id], onDelete: SetNull)
+  currentCity       City?     @relation("CurrentCity", fields: [currentCityId], references: [id], onDelete: SetNull)
+  workplaceCountry  Country?  @relation("WorkplaceCountry", fields: [workplaceCountryId], references: [id], onDelete: SetNull)
+  workplaceCity     City?     @relation("WorkplaceCity", fields: [workplaceCityId], references: [id], onDelete: SetNull)
+
+  occupation        Occupation? @relation(fields: [occupationId], references: [id], onDelete: SetNull)
+  incomeRange       IncomeRange? @relation(fields: [incomeRangeId], references: [id], onDelete: SetNull)
+  motherOccupation  Occupation? @relation("MotherOccupation", fields: [motherOccupationId], references: [id], onDelete: SetNull)
+  fatherOccupation  Occupation? @relation("FatherOccupation", fields: [fatherOccupationId], references: [id], onDelete: SetNull)
+  highestEducationLevel EducationLevel? @relation(fields: [highestEducationLevelId], references: [id], onDelete: SetNull)
+
+  familyFinancialStatus FamilyFinancialStatus? @relation(fields: [familyFinancialStatusId], references: [id], onDelete: SetNull)
+  familyType         FamilyType? @relation(fields: [familyTypeId], references: [id], onDelete: SetNull)
+  smokingHabit       SmokingHabit? @relation(fields: [smokingHabitId], references: [id], onDelete: SetNull)
+  drinkingHabit      DrinkingHabit? @relation(fields: [drinkingHabitId], references: [id], onDelete: SetNull)
+
+  children           CandidateChild[]
+  siblings           CandidateSibling[]
+  maternalRelatives  CandidateMaternalRelative[]
+  paternalRelatives  CandidatePaternalRelative[]
+  educationEntries   CandidateEducationEntry[]
+  hobbies            CandidateHobby[]
+  files              CandidateFile[]
+  partnerExpectation CandidatePartnerExpectation?
+}
+
+model CandidateChild {
+  id          Int      @id @default(autoincrement())
+  candidateId Int
+  name        String?
+  gender      Gender?
+  dateOfBirth DateTime?
+  livesWithCandidate Boolean? @default(true)
+
+  candidate   Candidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+}
+
+model CandidateSibling {
+  id             Int      @id @default(autoincrement())
+  candidateId    Int
+  name           String?
+  gender         Gender?
+  position       SiblingPosition?
+  occupationId   Int?
+  maritalStatus  MaritalStatus?
+  spouseOccupation String?
+  workplaceCountryId Int?
+  workplaceCityId Int?
+
+  candidate      Candidate  @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  occupation     Occupation? @relation(fields: [occupationId], references: [id], onDelete: SetNull)
+  workplaceCountry Country?  @relation("SiblingWorkplaceCountry", fields: [workplaceCountryId], references: [id], onDelete: SetNull)
+  workplaceCity   City?       @relation("SiblingWorkplaceCity", fields: [workplaceCityId], references: [id], onDelete: SetNull)
+}
+
+model CandidateMaternalRelative {
+  id             Int      @id @default(autoincrement())
+  candidateId    Int
+  type           RelativeType
+  occupationId   Int?
+  workplaceCountryId Int?
+  workplaceCityId Int?
+
+  candidate      Candidate  @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  occupation     Occupation? @relation(fields: [occupationId], references: [id], onDelete: SetNull)
+  workplaceCountry Country?  @relation("MaternalRelativeCountry", fields: [workplaceCountryId], references: [id], onDelete: SetNull)
+  workplaceCity   City?       @relation("MaternalRelativeCity", fields: [workplaceCityId], references: [id], onDelete: SetNull)
+}
+
+model CandidatePaternalRelative {
+  id             Int      @id @default(autoincrement())
+  candidateId    Int
+  type           RelativeType
+  occupationId   Int?
+  workplaceCountryId Int?
+  workplaceCityId Int?
+
+  candidate      Candidate  @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  occupation     Occupation? @relation(fields: [occupationId], references: [id], onDelete: SetNull)
+  workplaceCountry Country?  @relation("PaternalRelativeCountry", fields: [workplaceCountryId], references: [id], onDelete: SetNull)
+  workplaceCity   City?       @relation("PaternalRelativeCity", fields: [workplaceCityId], references: [id], onDelete: SetNull)
+}
+
+model CandidateEducationEntry {
+  id             Int      @id @default(autoincrement())
+  candidateId    Int
+  educationLevelId Int
+  institution    String?
+  fieldOfStudy   String?
+  passingYear    Int?
+  result         String?
+  countryId      Int?
+  cityId         Int?
+
+  candidate      Candidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  educationLevel EducationLevel @relation(fields: [educationLevelId], references: [id], onDelete: Cascade)
+  country        Country? @relation(fields: [countryId], references: [id], onDelete: SetNull)
+  city           City?    @relation(fields: [cityId], references: [id], onDelete: SetNull)
+}
+
+model CandidateHobby {
+  id          Int    @id @default(autoincrement())
+  candidateId Int
+  hobbyId     Int
+
+  candidate   Candidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  hobby       Hobby     @relation(fields: [hobbyId], references: [id], onDelete: Cascade)
+
+  @@unique([candidateId, hobbyId])
+}
+
+model CandidatePartnerExpectation {
+  id                          Int      @id @default(autoincrement())
+  candidateId                 Int      @unique
+  preferredMinAge             Int?
+  preferredMaxAge             Int?
+  preferredMinHeightCm        Int?
+  preferredMaxHeightCm        Int?
+  preferredEducationLevelId   Int?
+  preferredOccupationId       Int?
+  preferredCountryId          Int?
+  preferredCityId             Int?
+  preferredIncomeRangeId      Int?
+  preferredReligiousPracticeLevelId Int?
+  preferredFamilyFinancialStatusId  Int?
+  preferredFamilyTypeId       Int?
+  smokingHabitId              Int?
+  drinkingHabitId             Int?
+  acceptDivorcedOrWidowed     Boolean? @default(false)
+  expectations                String?
+
+  candidate                   Candidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  preferredEducationLevel     EducationLevel? @relation(fields: [preferredEducationLevelId], references: [id], onDelete: SetNull)
+  preferredOccupation         Occupation? @relation(fields: [preferredOccupationId], references: [id], onDelete: SetNull)
+  preferredCountry            Country? @relation(fields: [preferredCountryId], references: [id], onDelete: SetNull)
+  preferredCity               City? @relation("PreferredCity", fields: [preferredCityId], references: [id], onDelete: SetNull)
+  preferredIncomeRange        IncomeRange? @relation(fields: [preferredIncomeRangeId], references: [id], onDelete: SetNull)
+  preferredReligiousPracticeLevel ReligiousPracticeLevel? @relation(fields: [preferredReligiousPracticeLevelId], references: [id], onDelete: SetNull)
+  preferredFamilyFinancialStatus FamilyFinancialStatus? @relation(fields: [preferredFamilyFinancialStatusId], references: [id], onDelete: SetNull)
+  preferredFamilyType         FamilyType? @relation(fields: [preferredFamilyTypeId], references: [id], onDelete: SetNull)
+  smokingHabit                SmokingHabit? @relation(fields: [smokingHabitId], references: [id], onDelete: SetNull)
+  drinkingHabit               DrinkingHabit? @relation(fields: [drinkingHabitId], references: [id], onDelete: SetNull)
+}
+
+model CandidateFile {
+  id          Int      @id @default(autoincrement())
+  candidateId Int
+  type        FileType
+  filePath    String
+  originalName String?
+  mimeType    String?
+
+  candidate   Candidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+}
