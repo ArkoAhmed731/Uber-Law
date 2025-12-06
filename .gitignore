@@ -1,0 +1,13 @@
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.env
+backend/.env
+backend/node_modules
+frontend/node_modules
+backend/dist
+
+# prisma
+auth.db
