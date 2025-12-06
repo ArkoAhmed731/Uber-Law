@@ -1,0 +1,26 @@
+# Node/TypeScript
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment
+.env
+backend/.env
+
+# Build artifacts
+backend/dist
+frontend/dist
+
+# Prisma local db
+backend/auth.db
+
+# Coverage and test outputs
+coverage
+*.lcov
+
+# Mac/IDE cruft
+.DS_Store
+.vscode
+.idea
